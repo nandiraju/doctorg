@@ -10,10 +10,14 @@
             theme: {
                 extend: {
                     colors: {
-                        'medical-blue': '#0066CC',
-                        'ai-teal': '#00B4A6',
-                        'tech-purple': '#6366F1',
-                        'neural-green': '#10B981',
+                        // Primary Colors
+                        'brand-gold': '#DAA520',
+                        'brand-navy': '#1A365D',
+                        'brand-red': '#BE1E2D',
+                        // Secondary Colors
+                        'brand-blue': '#5C7AC6',
+                        'brand-yellow': '#E9C55D',
+                        'brand-slate': '#445278',
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
@@ -36,7 +40,7 @@
     </script>
     <style>
         .gradient-bg {
-            background: linear-gradient(-45deg, #0066CC, #00B4A6, #6366F1, #10B981);
+            background: linear-gradient(-45deg, #DAA520, #5C7AC6, #BE1E2D, #445278);
             background-size: 400% 400%;
             animation: gradient 8s ease infinite;
         }
@@ -49,8 +53,8 @@
         
         .neural-pattern {
             background-image: 
-                radial-gradient(circle at 25% 25%, rgba(0, 180, 166, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 25% 25%, rgba(218, 165, 32, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(92, 122, 198, 0.1) 0%, transparent 50%);
         }
     </style>
 </head>
@@ -60,20 +64,20 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-gradient-to-r from-medical-blue to-ai-teal rounded-lg flex items-center justify-center">
+                    <div class="w-10 h-10 bg-gradient-to-r from-brand-gold to-brand-blue rounded-lg flex items-center justify-center">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-medical-blue to-ai-teal bg-clip-text text-transparent">DoctorG</span>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-brand-gold to-brand-blue bg-clip-text text-transparent">DoctorG</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#features" class="text-gray-700 hover:text-medical-blue transition-colors">Features</a>
-                    <a href="#how-it-works" class="text-gray-700 hover:text-medical-blue transition-colors">How It Works</a>
-                    <a href="#benefits" class="text-gray-700 hover:text-medical-blue transition-colors">Benefits</a>
-                    <a href="#contact" class="text-gray-700 hover:text-medical-blue transition-colors">Contact</a>
+                    <a href="#features" class="text-gray-700 hover:text-brand-navy transition-colors">Features</a>
+                    <a href="#how-it-works" class="text-gray-700 hover:text-brand-navy transition-colors">How It Works</a>
+                    <a href="#benefits" class="text-gray-700 hover:text-brand-navy transition-colors">Benefits</a>
+                    <a href="#contact" class="text-gray-700 hover:text-brand-navy transition-colors">Contact</a>
                 </div>
-                <button class="bg-gradient-to-r from-medical-blue to-ai-teal text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                <button class="bg-gradient-to-r from-brand-gold to-brand-blue text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                     Get Started
                 </button>
             </div>
@@ -87,7 +91,7 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="text-center lg:text-left">
                     <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
-                        Meet <span class="bg-gradient-to-r from-medical-blue via-ai-teal to-tech-purple bg-clip-text text-transparent">DoctorG</span>
+                        Meet <span class="bg-gradient-to-r from-brand-gold via-brand-blue to-brand-red bg-clip-text text-transparent">DoctorG</span>
                         <br>Your AI Medical Expert
                     </h1>
                     <p class="text-xl text-gray-600 mb-8 leading-relaxed">
@@ -96,10 +100,10 @@
                         with intelligent, evidence-based recommendations to enhance your patient care.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <button class="bg-gradient-to-r from-medical-blue to-ai-teal text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        <button class="bg-gradient-to-r from-brand-gold to-brand-blue text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                             Try Clinical Assistant
                         </button>
-                        <button class="border-2 border-medical-blue text-medical-blue px-8 py-4 rounded-full text-lg font-semibold hover:bg-medical-blue hover:text-white transition-all duration-300">
+                        <button class="border-2 border-brand-navy text-brand-navy px-8 py-4 rounded-full text-lg font-semibold hover:bg-brand-navy hover:text-white transition-all duration-300">
                             Watch Demo
                         </button>
                     </div>
@@ -110,8 +114,8 @@
                              alt="AI Digital Interface and Neural Networks" 
                              class="w-full max-w-lg mx-auto rounded-3xl shadow-2xl">
                     </div>
-                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-neural-green to-ai-teal rounded-full animate-pulse-slow opacity-20"></div>
-                    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-tech-purple to-medical-blue rounded-full animate-pulse-slow opacity-20"></div>
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-brand-yellow to-brand-blue rounded-full animate-pulse-slow opacity-20"></div>
+                    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-brand-red to-brand-gold rounded-full animate-pulse-slow opacity-20"></div>
                 </div>
             </div>
         </div>
@@ -122,7 +126,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl lg:text-5xl font-bold mb-6">
-                    Powered by <span class="bg-gradient-to-r from-tech-purple to-neural-green bg-clip-text text-transparent">Advanced AI</span>
+                    Powered by <span class="bg-gradient-to-r from-brand-red to-brand-slate bg-clip-text text-transparent">Advanced AI</span>
                 </h2>
                 <p class="text-xl text-gray-600 max-w3xl mx-auto">
                     DoctorG leverages state-of-the-art large language models and comprehensive medical knowledge bases 
@@ -131,8 +135,8 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-gradient-to-r from-medical-blue to-ai-teal rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div class="group p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-brand-gold to-brand-blue rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                         </svg>
@@ -141,8 +145,8 @@
                     <p class="text-gray-600">Advanced AI algorithms analyze symptoms and medical history to provide accurate preliminary diagnoses and treatment recommendations.</p>
                 </div>
 
-                <div class="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-gradient-to-r from-ai-teal to-neural-green rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div class="group p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-brand-blue to-brand-yellow rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
                         </svg>
@@ -151,8 +155,8 @@
                     <p class="text-gray-600">Access healthcare guidance anytime, anywhere. DoctorG is always ready to assist with your medical questions and concerns.</p>
                 </div>
 
-                <div class="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-gradient-to-r from-tech-purple to-medical-blue rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div class="group p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-brand-red to-brand-navy rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
@@ -161,8 +165,8 @@
                     <p class="text-gray-600">Upload and analyze medical reports, lab results, imaging studies, and patient records with AI-powered interpretation and insights.</p>
                 </div>
 
-                <div class="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-gradient-to-r from-neural-green to-tech-purple rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div class="group p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-brand-yellow to-brand-slate rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
@@ -171,8 +175,8 @@
                     <p class="text-gray-600">Enterprise-grade security ensures your medical data remains confidential and protected with end-to-end encryption.</p>
                 </div>
 
-                <div class="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-gradient-to-r from-medical-blue to-tech-purple rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div class="group p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-brand-navy to-brand-red rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
@@ -181,8 +185,8 @@
                     <p class="text-gray-600">Get immediate answers to your health questions with lightning-fast AI processing and real-time consultation capabilities.</p>
                 </div>
 
-                <div class="group p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                    <div class="w-16 h-16 bg-gradient-to-r from-ai-teal to-medical-blue rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div class="group p-8 rounded-2xl bg-white border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-brand-slate to-brand-gold rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
                         </svg>
@@ -199,7 +203,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl lg:text-5xl font-bold mb-6">
-                    How <span class="bg-gradient-to-r from-medical-blue to-ai-teal bg-clip-text text-transparent">DoctorG</span> Works
+                    How <span class="bg-gradient-to-r from-brand-gold to-brand-blue bg-clip-text text-transparent">DoctorG</span> Works
                 </h2>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
                     Experience seamless AI-powered healthcare in three simple steps
@@ -209,10 +213,10 @@
             <div class="grid lg:grid-cols-3 gap-8">
                 <div class="text-center group">
                     <div class="relative mb-8">
-                        <div class="w-32 h-32 mx-auto bg-gradient-to-r from-medical-blue to-ai-teal rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <div class="w-32 h-32 mx-auto bg-gradient-to-r from-brand-gold to-brand-blue rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                             <span class="text-4xl font-bold text-white">1</span>
                         </div>
-                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-neural-green rounded-full animate-ping opacity-75"></div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-brand-yellow rounded-full animate-ping opacity-75"></div>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Upload Reports & Ask Questions</h3>
                     <p class="text-gray-600 mb-6">Upload medical reports, lab results, or imaging studies and ask DoctorG specific clinical questions about your patients through our intuitive interface.</p>
@@ -223,10 +227,10 @@
 
                 <div class="text-center group">
                     <div class="relative mb-8">
-                        <div class="w-32 h-32 mx-auto bg-gradient-to-r from-ai-teal to-neural-green rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <div class="w-32 h-32 mx-auto bg-gradient-to-r from-brand-blue to-brand-red rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                             <span class="text-4xl font-bold text-white">2</span>
                         </div>
-                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-tech-purple rounded-full animate-ping opacity-75"></div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-brand-slate rounded-full animate-ping opacity-75"></div>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">AI Analysis</h3>
                     <p class="text-gray-600 mb-6">Our advanced LLM processes your information against vast medical databases to provide accurate insights.</p>
@@ -237,10 +241,10 @@
 
                 <div class="text-center group">
                     <div class="relative mb-8">
-                        <div class="w-32 h-32 mx-auto bg-gradient-to-r from-neural-green to-tech-purple rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        <div class="w-32 h-32 mx-auto bg-gradient-to-r from-brand-red to-brand-navy rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                             <span class="text-4xl font-bold text-white">3</span>
                         </div>
-                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-medical-blue rounded-full animate-ping opacity-75"></div>
+                        <div class="absolute -top-2 -right-2 w-8 h-8 bg-brand-gold rounded-full animate-ping opacity-75"></div>
                     </div>
                     <h3 class="text-2xl font-bold mb-4">Get Personalized Guidance</h3>
                     <p class="text-gray-600 mb-6">Receive evidence-based clinical recommendations, differential diagnoses, and treatment protocols to support your decision-making.</p>
@@ -258,11 +262,11 @@
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div>
                     <h2 class="text-4xl lg:text-5xl font-bold mb-8">
-                        Why Healthcare Professionals Choose <span class="bg-gradient-to-r from-tech-purple to-neural-green bg-clip-text text-transparent">DoctorG</span>?
+                        Why Healthcare Professionals Choose <span class="bg-gradient-to-r from-brand-red to-brand-slate bg-clip-text text-transparent">DoctorG</span>?
                     </h2>
                     <div class="space-y-6">
                         <div class="flex items-start space-x-4">
-                            <div class="w-8 h-8 bg-gradient-to-r from-medical-blue to-ai-teal rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 bg-gradient-to-r from-brand-gold to-brand-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
@@ -274,7 +278,7 @@
                         </div>
                         
                         <div class="flex items-start space-x-4">
-                            <div class="w-8 h-8 bg-gradient-to-r from-ai-teal to-neural-green rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 bg-gradient-to-r from-brand-blue to-brand-yellow rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
@@ -286,7 +290,7 @@
                         </div>
                         
                         <div class="flex items-start space-x-4">
-                            <div class="w-8 h-8 bg-gradient-to-r from-neural-green to-tech-purple rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 bg-gradient-to-r from-brand-red to-brand-slate rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
@@ -298,7 +302,7 @@
                         </div>
                         
                         <div class="flex items-start space-x-4">
-                            <div class="w-8 h-8 bg-gradient-to-r from-tech-purple to-medical-blue rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                            <div class="w-8 h-8 bg-gradient-to-r from-brand-navy to-brand-gold rounded-full flex items-center justify-center flex-shrink-0 mt-1">
                                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
@@ -315,7 +319,7 @@
                     <img src="https://images.unsplash.com/photo-1504813184591-01572f98c85f?w=600&h=500&fit=crop" 
                          alt="Healthcare Professional Using Technology" 
                          class="w-full rounded-2xl shadow-2xl">
-                    <div class="absolute inset-0 bg-gradient-to-r from-medical-blue/20 to-ai-teal/20 rounded-2xl"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-brand-gold/20 to-brand-blue/20 rounded-2xl"></div>
                 </div>
             </div>
         </div>
@@ -326,7 +330,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-4xl lg:text-5xl font-bold mb-6">
-                    Trusted by <span class="bg-gradient-to-r from-medical-blue to-ai-teal bg-clip-text text-transparent">Healthcare Professionals</span>
+                    Trusted by <span class="bg-gradient-to-r from-brand-gold to-brand-blue bg-clip-text text-transparent">Healthcare Professionals</span>
                 </h2>
             </div>
             
@@ -383,10 +387,10 @@
                 Join thousands of healthcare professionals who rely on DoctorG for intelligent clinical decision support and enhanced patient care.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <button class="bg-white text-medical-blue px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <button class="bg-white text-brand-navy px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                     Start Clinical Trial
                 </button>
-                <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-medical-blue transition-all duration-300">
+                <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-brand-navy transition-all duration-300">
                     Schedule Demo
                 </button>
             </div>
@@ -399,7 +403,7 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div class="col-span-2">
                     <div class="flex items-center space-x-2 mb-6">
-                        <div class="w-10 h-10 bg-gradient-to-r from-medical-blue to-ai-teal rounded-lg flex items-center justify-center">
+                        <div class="w-10 h-10 bg-gradient-to-r from-brand-gold to-brand-blue rounded-lg flex items-center justify-center">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                             </svg>
@@ -411,12 +415,12 @@
                         Providing intelligent, accessible, and personalized medical guidance for everyone.
                     </p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-medical-blue transition-colors">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-gold transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
                             </svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-medical-blue transition-colors">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-brand-gold transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                             </svg>

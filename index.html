@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DoctorG - AI-Powered Virtual Doctor Avatar Mobile App</title>
     
+    <!-- Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Ultra-Fast Resource Hints -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
@@ -13,23 +18,26 @@
     <!-- Preload Critical Assets -->
     <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
     <link rel="preload" href="assets/logo.webp" as="image">
-    <link rel="preload" href="assets/apple_store.svg" as="image">
     
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              display: ["Outfit", "sans-serif"],
+            },
             colors: {
-              // Primary Colors
-              "brand-gold": "#DAA520",
-              "brand-navy": "#1A365D",
-              "brand-red": "#BE1E2D",
-              // Secondary Colors
-              "brand-blue": "#5C7AC6",
-              "brand-yellow": "#E9C55D",
-              "brand-slate": "#445278",
+              brand: {
+                gold: "#D4AF37",
+                "gold-light": "#F4E0A1",
+                blue: "#0F172A", // Deep Navy
+                "blue-accent": "#3B82F6",
+                red: "#E11D48",
+                slate: "#64748B",
+              }
             },
             animation: {
               float: "float 6s ease-in-out infinite",
@@ -51,20 +59,28 @@
       };
     </script>
     <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      
+      h1, h2, h3, .font-display {
+        font-family: 'Outfit', sans-serif;
+      }
+
       .gradient-bg {
-        background: linear-gradient(-45deg, #daa520, #5c7ac6, #be1e2d, #445278);
+        background: linear-gradient(-45deg, #d4af37, #3b82f6, #e11d48, #0f172a);
         background-size: 400% 400%;
         animation: gradient 8s ease infinite;
       }
 
       .glass-effect {
-        backdrop-filter: blur(16px);
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.3);
       }
 
       .dark .glass-effect {
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(15, 23, 42, 0.7);
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
 
@@ -123,28 +139,130 @@
         min-height: 500px;
       }
 
-      .app-screen-main {
-        transform: rotateY(-15deg) rotateX(10deg);
-        z-index: 20;
+      /* iPhone 14 Pro Frame Styling */
+      .device-iphone-14-pro {
+        position: relative;
+        width: 320px;
+        height: 696px; /* Corrected for 2.174 aspect ratio */
+        background: #111;
+        border-radius: 4rem;
+        border: 12px solid #222;
+        box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        z-index: 50;
         transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: -20px 20px 50px rgba(0,0,0,0.3);
+        transform: rotateY(-15deg) rotateX(10deg);
       }
 
-      .app-screen-secondary {
-        transform: rotateY(-15deg) rotateX(10deg) translateZ(-100px) translateX(80px);
-        opacity: 0.7;
+      .dark .device-iphone-14-pro {
+        border-color: #334155;
+        box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.8);
+      }
+
+      /* Dynamic Island */
+      .dynamic-island {
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 28px;
+        background: black;
+        border-radius: 20px;
+        z-index: 60;
+      }
+
+      /* Bezel & Inner Screen */
+      .device-screen {
+        position: absolute;
+        inset: 4px;
+        background: #000;
+        border-radius: 3rem;
+        overflow: hidden;
+      }
+
+      .device-screen img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Physical Buttons */
+      .device-button {
+        position: absolute;
+        left: -15px;
+        width: 3px;
+        background: #444;
+        border-radius: 2px;
+      }
+      /* Small Device Variant for Grids */
+      .device-iphone-14-pro.device-small {
+        width: 240px;
+        height: 522px; /* Corrected for 2.174 aspect ratio */
+        border: 10px solid #222;
+        border-radius: 3rem;
+        transform: rotateY(-10deg) rotateX(5deg);
+        box-shadow: -15px 15px 40px rgba(0, 0, 0, 0.4);
+        margin: 0 auto;
+        transition: all 0.5s ease;
+      }
+
+      .dark .device-iphone-14-pro.device-small {
+        border-color: #334155;
+      }
+
+      .device-small .dynamic-island {
+        width: 70px;
+        height: 18px;
+        top: 12px;
+        border-radius: 12px;
+      }
+
+      .device-small .device-screen {
+        inset: 4px;
+        border-radius: 2.2rem;
+      }
+
+      .device-small .device-button {
+        width: 2px;
+        left: -10px;
+      }
+      .device-small .btn-volume-up { top: 80px; height: 35px; }
+      .device-small .btn-volume-down { top: 125px; height: 35px; }
+      .device-small .btn-power { left: auto; right: -10px; top: 110px; height: 60px; }
+
+      .app-screen-stack {
+        perspective: 2000px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 700px;
+      }
+
+      .app-screen-secondary-wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-10%, -50%) rotateY(-15deg) rotateX(10deg) translateZ(-150px) translateX(120px);
         z-index: 10;
+        width: 300px;
+        opacity: 0.8;
         transition: all 0.6s ease;
       }
 
-      .app-screen-stack:hover .app-screen-main {
+      .app-screen-stack:hover .device-iphone-14-pro {
         transform: rotateY(0deg) rotateX(0deg) scale(1.05);
-        z-index: 30;
+        z-index: 100;
       }
 
-      .app-screen-stack:hover .app-screen-secondary {
-        transform: rotateY(-5deg) rotateX(5deg) translateZ(-50px) translateX(120px);
-        opacity: 0.3;
+      .app-screen-stack:hover .device-iphone-14-pro.device-small {
+        transform: rotateY(0deg) rotateX(0deg) scale(1.08);
+      }
+
+      .app-screen-stack:hover .app-screen-secondary-wrap {
+        transform: translate(15%, -50%) rotateY(-5deg) rotateX(5deg) translateZ(-50px);
+        opacity: 1;
       }
 
       /* Bullet Speed Magic: Only render what is visible */
@@ -182,40 +300,40 @@
     </script>
   </head>
   <body
-    class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden transition-colors duration-300"
+    class="bg-slate-50 dark:bg-brand-blue text-slate-900 dark:text-slate-100 font-sans overflow-x-hidden transition-colors duration-300"
   >
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-effect">
+    <nav class="fixed top-0 w-full z-50 glass-effect border-b border-slate-200 dark:border-white/10">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-4">
-          <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-gradient-to-r from-brand-gold to-brand-blue rounded-lg flex items-center justify-center overflow-hidden shadow-lg border-2 border-white/20">
+          <div class="flex items-center space-x-3 group">
+            <div class="w-11 h-11 bg-gradient-to-br from-brand-gold to-brand-blue-accent rounded-xl flex items-center justify-center overflow-hidden shadow-lg border-2 border-white/30 transition-transform group-hover:scale-110">
               <img src="assets/logo.webp" alt="DoctorG" class="w-full h-full object-cover">
             </div>
             <span
-              class="text-2xl font-bold bg-gradient-to-r from-brand-gold to-brand-blue bg-clip-text text-transparent"
+              class="text-2xl font-extrabold font-display bg-gradient-to-r from-brand-gold to-brand-blue-accent bg-clip-text text-transparent"
               >DoctorG</span
             >
           </div>
           <div class="hidden md:flex space-x-8">
             <a
               href="#features"
-              class="text-gray-700 dark:text-gray-300 hover:text-brand-navy dark:hover:text-brand-gold transition-colors"
+              class="text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors"
               >Features</a
             >
             <a
               href="#how-it-works"
-              class="text-gray-700 dark:text-gray-300 hover:text-brand-navy dark:hover:text-brand-gold transition-colors"
+              class="text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors"
               >How It Works</a
             >
             <a
               href="#benefits"
-              class="text-gray-700 dark:text-gray-300 hover:text-brand-navy dark:hover:text-brand-gold transition-colors"
+              class="text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors"
               >Benefits</a
             >
             <a
               href="#contact"
-              class="text-gray-700 dark:text-gray-300 hover:text-brand-navy dark:hover:text-brand-gold transition-colors"
+              class="text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors"
               >Contact</a
             >
           </div>
@@ -223,11 +341,12 @@
             <!-- Theme Toggle Button -->
             <button
               id="theme-toggle"
-              class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+              class="p-2.5 rounded-xl bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 transition-all border border-slate-300 dark:border-white/10 shadow-sm active:scale-95"
+              aria-label="Toggle dark mode"
             >
               <svg
                 id="theme-toggle-dark-icon"
-                class="hidden w-5 h-5 text-gray-800 dark:text-gray-200"
+                class="hidden w-5 h-5 text-slate-800 dark:text-brand-gold"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
@@ -237,12 +356,12 @@
               </svg>
               <svg
                 id="theme-toggle-light-icon"
-                class="hidden w-5 h-5 text-gray-800 dark:text-gray-200"
+                class="hidden w-5 h-5 text-brand-gold"
                 fill="currentColor"
                 viewBox="0 0 20 20"
               >
                 <path
-                  d="M10 2L13.09 8.26L20 9L14 14.74L15.18 21.02L10 17.77L4.82 21.02L6 14.74L0 9L6.91 8.26L10 2Z"
+                  d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
                 ></path>
               </svg>
             </button>
@@ -261,16 +380,16 @@
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="text-center lg:text-left">
-            <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-6">
+            <h1 class="text-5xl lg:text-7xl font-extrabold font-display leading-tight mb-6">
               Meet
               <span
-                class="bg-gradient-to-r from-brand-gold via-brand-blue to-brand-red bg-clip-text text-transparent"
+                class="bg-gradient-to-r from-brand-gold via-brand-blue-accent to-brand-red bg-clip-text text-transparent"
                 >DoctorG</span
               >
               <br />Your AI Medical Expert
             </h1>
             <p
-              class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed"
+              class="text-xl text-gray-600 dark:text-slate-300 mb-8 leading-relaxed"
             >
               Download the revolutionary AI-powered virtual doctor mobile app.
               DoctorG reads medical reports, analyzes patient data, and answers
@@ -283,38 +402,55 @@
               <!-- App Store Buttons -->
               <a
                 href="https://apps.apple.com/ua/app/dr-g/id6756027530"
-                class="transition-transform hover:scale-105"
+                class="transition-transform hover:scale-105 active:scale-95"
               >
                 <img src="assets/apple_store.svg" alt="Download on the App Store" class="h-12 lg:h-14">
               </a>
               <a
                 href="https://play.google.com/store/apps/details?id=com.onecellai.drg"
-                class="transition-transform hover:scale-105"
+                class="transition-transform hover:scale-105 active:scale-95"
               >
                 <img src="assets/android_store.svg" alt="Get it on Google Play" class="h-12 lg:h-14">
               </a>
             </div>
-            <p class="text-sm text-gray-500 dark:text-gray-400">
+            <p class="text-sm text-slate-500 dark:text-slate-400 font-medium">
               Available for iOS 14.0+ and Android 8.0+
             </p>
           </div>
           <div class="relative app-screen-stack">
-            <div class="animate-float relative">
-              <!-- Main App Screen (IMG_9520 as primary per user request) -->
-              <img
-                src="assets/IMG_9520.PNG"
-                alt="DoctorG Primary Interface"
-                class="app-screen-main w-full max-w-sm mx-auto rounded-[3rem] shadow-2xl border-8 border-gray-900 dark:border-white/10"
-                fetchpriority="high"
-                decoding="async"
-              />
-              <!-- Secondary App Screen (IMG_9516 as secondary) -->
-              <img
-                src="assets/IMG_9516.PNG"
-                alt="DoctorG Secondary Interface"
-                class="app-screen-secondary absolute top-0 left-0 w-full max-w-sm mx-auto rounded-[3rem] shadow-xl border-4 border-gray-800 dark:border-white/5 hidden lg:block"
-                loading="lazy"
-              />
+            <div class="animate-float relative flex items-center justify-center">
+              <!-- iPhone 14 Pro Device Frame -->
+              <div class="device-iphone-14-pro">
+                <div class="dynamic-island"></div>
+                <div class="device-button btn-volume-up"></div>
+                <div class="device-button btn-volume-down"></div>
+                <div class="device-button btn-power"></div>
+                <div class="device-screen">
+                  <img
+                    src="assets/main_screen.PNG"
+                    alt="DoctorG Primary Interface"
+                    fetchpriority="high"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+
+              <!-- Secondary Background Screen (IMG_9520.PNG) -->
+              <div class="app-screen-secondary-wrap hidden lg:block">
+                <div class="device-iphone-14-pro device-small opacity-80 scale-90">
+                  <div class="dynamic-island"></div>
+                  <div class="device-button btn-volume-up"></div>
+                  <div class="device-button btn-volume-down"></div>
+                  <div class="device-button btn-power"></div>
+                  <div class="device-screen">
+                    <img
+                      src="assets/IMG_9520.PNG"
+                      alt="DoctorG Secondary Interface"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
             <div
               class="absolute -top-10 -right-10 w-48 h-48 bg-brand-gold rounded-full opacity-20 blur-3xl animate-pulse-slow"
@@ -330,31 +466,30 @@
     <!-- Features Section -->
     <section
       id="features"
-      class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300"
+      class="py-24 bg-white dark:bg-brand-blue transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+        <div class="text-center mb-20">
+          <h2 class="text-4xl lg:text-5xl font-extrabold font-display mb-6 dark:text-white">
             Powered by
             <span
-              class="bg-gradient-to-r from-brand-red to-brand-slate bg-clip-text text-transparent"
+              class="bg-gradient-to-r from-brand-red to-brand-gold bg-clip-text text-transparent"
               >Advanced AI</span
             >
           </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
             DoctorG mobile app leverages state-of-the-art large language models
-            and comprehensive medical knowledge bases to read and analyze
-            medical reports, answer clinical questions, and provide
-            evidence-based recommendations - all from your mobile device.
+            and comprehensive medical knowledge bases to analyze
+            medical reports and provide evidence-based recommendations.
           </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div
-            class="group p-8 rounded-2xl bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            class="group p-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:border-brand-gold/50"
           >
             <div
-              class="w-16 h-16 bg-gradient-to-r from-brand-gold to-brand-blue rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+              class="w-16 h-16 bg-gradient-to-br from-brand-gold to-brand-blue-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg border border-white/20"
             >
               <svg
                 class="w-8 h-8 text-white"
@@ -366,25 +501,25 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                 ></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-4 dark:text-white">
-              Intelligent Diagnosis
+            <h3 class="text-2xl font-bold font-display mb-4 dark:text-white">
+              Report Analysis
             </h3>
-            <p class="text-gray-600 dark:text-gray-300">
-              Advanced AI algorithms analyze symptoms and medical history
-              through our mobile interface to provide accurate preliminary
-              diagnoses and treatment recommendations.
+            <p class="text-slate-600 dark:text-slate-400">
+              Upload blood work, scans, or prescriptions. Our AI provides
+              detailed explanations and suggests follow-up questions for your
+              doctor.
             </p>
           </div>
 
           <div
-            class="group p-8 rounded-2xl bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            class="group p-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:border-brand-gold/50"
           >
             <div
-              class="w-16 h-16 bg-gradient-to-r from-brand-blue to-brand-yellow rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+              class="w-16 h-16 bg-gradient-to-br from-brand-blue-accent to-brand-red rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg border border-white/20"
             >
               <svg
                 class="w-8 h-8 text-white"
@@ -396,25 +531,24 @@
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   stroke-width="2"
-                  d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                  d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"
                 ></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-4 dark:text-white">
-              Mobile Accessibility
+            <h3 class="text-2xl font-bold font-display mb-4 dark:text-white">
+              Medical Chat
             </h3>
-            <p class="text-gray-600 dark:text-gray-300">
-              Access healthcare guidance anytime, anywhere from your smartphone.
-              DoctorG is always in your pocket, ready to assist with medical
-              questions.
+            <p class="text-slate-600 dark:text-slate-400">
+              Secure, private conversations about symptoms or health concerns.
+              Advanced NLP designed specifically for accurate medical context.
             </p>
           </div>
 
           <div
-            class="group p-8 rounded-2xl bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            class="group p-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:border-brand-gold/50"
           >
             <div
-              class="w-16 h-16 bg-gradient-to-r from-brand-red to-brand-navy rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+              class="w-16 h-16 bg-gradient-to-br from-brand-red to-brand-slate rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg border border-white/20"
             >
               <svg
                 class="w-8 h-8 text-white"
@@ -436,21 +570,20 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-4 dark:text-white">
+            <h3 class="text-2xl font-bold font-display mb-4 dark:text-white">
               Photo Analysis
             </h3>
-            <p class="text-gray-600 dark:text-gray-300">
+            <p class="text-slate-600 dark:text-slate-400">
               Take photos of medical reports, lab results, and imaging studies
-              directly with your phone camera for instant AI-powered analysis
-              and insights.
+              directly with your phone camera for instant AI-powered analysis.
             </p>
           </div>
 
           <div
-            class="group p-8 rounded-2xl bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            class="group p-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:border-brand-gold/50"
           >
             <div
-              class="w-16 h-16 bg-gradient-to-r from-brand-yellow to-brand-slate rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+              class="w-16 h-16 bg-gradient-to-br from-brand-gold to-brand-slate rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg border border-white/20"
             >
               <svg
                 class="w-8 h-8 text-white"
@@ -466,21 +599,20 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-4 dark:text-white">
+            <h3 class="text-2xl font-bold font-display mb-4 dark:text-white">
               Secure & Private
             </h3>
-            <p class="text-gray-600 dark:text-gray-300">
+            <p class="text-slate-600 dark:text-slate-400">
               Enterprise-grade security ensures your medical data remains
-              confidential and protected with end-to-end encryption on your
-              mobile device.
+              confidential and protected with end-to-end encryption.
             </p>
           </div>
 
           <div
-            class="group p-8 rounded-2xl bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            class="group p-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:border-brand-gold/50"
           >
             <div
-              class="w-16 h-16 bg-gradient-to-r from-brand-navy to-brand-red rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+              class="w-16 h-16 bg-gradient-to-br from-brand-blue to-brand-red rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg border border-white/20"
             >
               <svg
                 class="w-8 h-8 text-white"
@@ -496,21 +628,20 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-4 dark:text-white">
+            <h3 class="text-2xl font-bold font-display mb-4 dark:text-white">
               Instant Responses
             </h3>
-            <p class="text-gray-600 dark:text-gray-300">
+            <p class="text-slate-600 dark:text-slate-400">
               Get immediate answers to your health questions with lightning-fast
-              AI processing optimized for mobile devices and real-time
-              consultation capabilities.
+              AI processing optimized for your smartphone.
             </p>
           </div>
 
           <div
-            class="group p-8 rounded-2xl bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+            class="group p-8 rounded-3xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:border-brand-gold/50"
           >
             <div
-              class="w-16 h-16 bg-gradient-to-r from-brand-slate to-brand-gold rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"
+              class="w-16 h-16 bg-gradient-to-br from-brand-slate to-brand-gold rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg border border-white/20"
             >
               <svg
                 class="w-8 h-8 text-white"
@@ -526,13 +657,12 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-bold mb-4 dark:text-white">
+            <h3 class="text-2xl font-bold font-display mb-4 dark:text-white">
               Offline Mode
             </h3>
-            <p class="text-gray-600 dark:text-gray-300">
+            <p class="text-slate-600 dark:text-slate-400">
               Access essential medical information and previously analyzed
-              reports even when offline, ensuring healthcare support wherever
-              you are.
+              reports even when offline.
             </p>
           </div>
         </div>
@@ -542,21 +672,20 @@
     <!-- How It Works Section -->
     <section
       id="how-it-works"
-      class="py-20 bg-gray-50 dark:bg-gray-900 neural-pattern transition-colors duration-300"
+      class="py-24 bg-slate-50 dark:bg-brand-blue/50 neural-pattern transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+        <div class="text-center mb-20">
+          <h2 class="text-4xl lg:text-5xl font-extrabold font-display mb-6 dark:text-white">
             How
             <span
-              class="bg-gradient-to-r from-brand-gold to-brand-blue bg-clip-text text-transparent"
+              class="bg-gradient-to-r from-brand-gold to-brand-blue-accent bg-clip-text text-transparent"
               >DoctorG</span
             >
             Works
           </h2>
-          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Experience seamless AI-powered healthcare in three simple steps on
-            your mobile device
+          <p class="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+            Experience seamless AI-powered healthcare in three simple steps
           </p>
         </div>
 
@@ -564,80 +693,103 @@
           <div class="text-center group">
             <div class="relative mb-8">
               <div
-                class="w-32 h-32 mx-auto bg-gradient-to-r from-brand-gold to-brand-blue rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+                class="w-32 h-32 mx-auto bg-gradient-to-br from-brand-gold to-brand-blue-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl border-4 border-white/20"
               >
-                <span class="text-4xl font-bold text-white">1</span>
-              </div>
-              <div
-                class="absolute -top-2 -right-2 w-8 h-8 bg-brand-yellow rounded-full animate-ping opacity-75"
-              ></div>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 dark:text-white">
-              Download & Open App
-            </h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-6">
-              Download DoctorG from the App Store or Google Play, create your
-              secure account, and start uploading medical reports or asking
-              clinical questions through the intuitive mobile interface.
-            </p>
-            <img
-              src="assets/IMG_9517.PNG"
-              alt="Download DoctorG App"
-              class="w-full max-w-[200px] mx-auto rounded-3xl shadow-lg border-4 border-gray-100 dark:border-gray-800"
-              loading="lazy"
-            />
-          </div>
-
-          <div class="text-center group">
-            <div class="relative mb-8">
-              <div
-                class="w-32 h-32 mx-auto bg-gradient-to-r from-brand-blue to-brand-red rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-              >
-                <span class="text-4xl font-bold text-white">2</span>
-              </div>
-              <div
-                class="absolute -top-2 -right-2 w-8 h-8 bg-brand-slate rounded-full animate-ping opacity-75"
-              ></div>
-            </div>
-            <h3 class="text-2xl font-bold mb-4 dark:text-white">AI Analysis</h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-6">
-              Our advanced mobile-optimized AI processes your information
-              against vast medical databases to provide accurate insights
-              directly on your smartphone.
-            </p>
-            <img
-              src="assets/IMG_9519.PNG"
-              alt="DoctorG AI Analysis"
-              class="w-full max-w-[200px] mx-auto rounded-3xl shadow-lg border-4 border-gray-100 dark:border-gray-800"
-              loading="lazy"
-            />
-          </div>
-
-          <div class="text-center group">
-            <div class="relative mb-8">
-              <div
-                class="w-32 h-32 mx-auto bg-gradient-to-r from-brand-red to-brand-navy rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-              >
-                <span class="text-4xl font-bold text-white">3</span>
+                <span class="text-4xl font-extrabold font-display text-white">1</span>
               </div>
               <div
                 class="absolute -top-2 -right-2 w-8 h-8 bg-brand-gold rounded-full animate-ping opacity-75"
               ></div>
             </div>
-            <h3 class="text-2xl font-bold mb-4 dark:text-white">
-              Get Mobile Guidance
+            <h3 class="text-2xl font-bold font-display mb-4 dark:text-white">
+              Download App
             </h3>
-            <p class="text-gray-600 dark:text-gray-300 mb-6">
-              Receive evidence-based clinical recommendations, differential
-              diagnoses, and treatment protocols instantly on your mobile device
-              to support your decision-making.
+            <p class="text-slate-600 dark:text-slate-300 mb-8 font-medium">
+              Get started by downloading DoctorG from the App Store or Google Play.
             </p>
-            <img
-              src="assets/IMG_9516.PNG"
-              alt="DoctorG Medical Guidance"
-              class="w-full max-w-[200px] mx-auto rounded-3xl shadow-lg border-4 border-gray-100 dark:border-gray-700"
-              loading="lazy"
-            />
+            <div class="flex flex-col gap-4 items-center mb-8">
+              <a href="https://apps.apple.com/ua/app/dr-g/id6756027530" class="transition-transform hover:scale-105 active:scale-95">
+                <img src="assets/apple_store.svg" alt="App Store" class="h-12">
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.onecellai.drg" class="transition-transform hover:scale-105 active:scale-95">
+                <img src="assets/android_store.svg" alt="Google Play" class="h-12">
+              </a>
+            </div>
+            <div class="device-iphone-14-pro device-small group-hover:scale-110 transition-transform duration-500 shadow-2xl">
+              <div class="dynamic-island"></div>
+              <div class="device-button btn-volume-up"></div>
+              <div class="device-button btn-volume-down"></div>
+              <div class="device-button btn-power"></div>
+              <div class="device-screen">
+                <img
+                  src="assets/IMG_9517.PNG"
+                  alt="Download DoctorG App"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center group">
+            <div class="relative mb-12">
+              <div
+                class="w-32 h-32 mx-auto bg-gradient-to-br from-brand-blue-accent to-brand-red rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl border-4 border-white/20"
+              >
+                <span class="text-4xl font-extrabold font-display text-white">2</span>
+              </div>
+              <div
+                class="absolute -top-2 -right-2 w-8 h-8 bg-brand-blue-accent rounded-full animate-ping opacity-75"
+              ></div>
+            </div>
+            <h3 class="text-2xl font-bold font-display mb-4 dark:text-white">AI Analysis</h3>
+            <p class="text-slate-600 dark:text-slate-300 mb-8 font-medium">
+              Our advanced AI processes your reports to provide accurate insights instantly.
+            </p>
+            <div class="device-iphone-14-pro device-small group-hover:scale-110 transition-transform duration-500 shadow-2xl">
+              <div class="dynamic-island"></div>
+              <div class="device-button btn-volume-up"></div>
+              <div class="device-button btn-volume-down"></div>
+              <div class="device-button btn-power"></div>
+              <div class="device-screen">
+                <img
+                  src="assets/IMG_9519.PNG"
+                  alt="DoctorG AI Analysis"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center group">
+            <div class="relative mb-12">
+              <div
+                class="w-32 h-32 mx-auto bg-gradient-to-br from-brand-red to-brand-gold rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-xl border-4 border-white/20"
+              >
+                <span class="text-4xl font-extrabold font-display text-white">3</span>
+              </div>
+              <div
+                class="absolute -top-2 -right-2 w-8 h-8 bg-brand-red rounded-full animate-ping opacity-75"
+              ></div>
+            </div>
+            <h3 class="text-2xl font-bold font-display mb-4 dark:text-white">
+              Clinical Support
+            </h3>
+            <p class="text-slate-600 dark:text-slate-300 mb-8 font-medium">
+              Receive evidence-based recommendations instantly on your mobile device.
+            </p>
+            <div class="device-iphone-14-pro device-small group-hover:scale-110 transition-transform duration-500 shadow-2xl">
+              <div class="dynamic-island"></div>
+              <div class="device-button btn-volume-up"></div>
+              <div class="device-button btn-volume-down"></div>
+              <div class="device-button btn-power"></div>
+              <div class="device-screen">
+                <img
+                  src="assets/main_screen.PNG"
+                  alt="Clinical Support Results"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -646,16 +798,16 @@
     <!-- Benefits Section -->
     <section
       id="benefits"
-      class="py-20 bg-white dark:bg-gray-800 transition-colors duration-300"
+      class="py-24 bg-white dark:bg-brand-blue transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 class="text-4xl lg:text-5xl font-bold mb-8">
-              Why Healthcare Professionals Choose
+            <h2 class="text-4xl lg:text-5xl font-extrabold font-display mb-8 dark:text-white">
+              Why Expert Doctors Choose
               <span
-                class="bg-gradient-to-r from-brand-red to-brand-slate bg-clip-text text-transparent"
-                >DoctorG Mobile</span
+                class="bg-gradient-to-r from-brand-gold to-brand-red bg-clip-text text-transparent"
+                >DoctorG</span
               >?
             </h2>
             <div class="space-y-6">
@@ -708,10 +860,10 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-xl font-semibold mb-2 dark:text-white">
+                  <h3 class="text-xl font-bold font-display mb-2 dark:text-white">
                     Pocket-Sized Clinical Support
                   </h3>
-                  <p class="text-gray-600 dark:text-gray-300">
+                  <p class="text-slate-600 dark:text-slate-400 font-medium">
                     Get immediate access to evidence-based medical guidance and
                     treatment protocols during patient consultations, right from
                     your smartphone.
@@ -738,10 +890,10 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-xl font-semibold mb-2 dark:text-white">
+                  <h3 class="text-xl font-bold font-display mb-2 dark:text-white">
                     Cross-Platform Sync
                   </h3>
-                  <p class="text-gray-600 dark:text-gray-300">
+                  <p class="text-slate-600 dark:text-slate-400 font-medium">
                     Seamlessly sync your data across iOS and Android devices,
                     ensuring your medical insights are always accessible
                     wherever you are.
@@ -751,7 +903,7 @@
 
               <div class="flex items-start space-x-4">
                 <div
-                  class="w-8 h-8 bg-gradient-to-r from-brand-navy to-brand-gold rounded-full flex items-center justify-center flex-shrink-0 mt-1"
+                  class="w-8 h-8 bg-gradient-to-r from-brand-blue to-brand-gold rounded-full flex items-center justify-center flex-shrink-0 mt-1"
                 >
                   <svg
                     class="w-5 h-5 text-white"
@@ -768,10 +920,10 @@
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-xl font-semibold mb-2 dark:text-white">
+                  <h3 class="text-xl font-bold font-display mb-2 dark:text-white">
                     Global Mobile Access
                   </h3>
-                  <p class="text-gray-600 dark:text-gray-300">
+                  <p class="text-slate-600 dark:text-slate-400 font-medium">
                     Bridge healthcare gaps in underserved areas with AI-powered
                     medical expertise accessible from any smartphone, anywhere
                     in the world.
@@ -798,35 +950,35 @@
 
     <!-- Testimonials -->
     <section
-      class="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300"
+      class="py-24 bg-slate-50 dark:bg-brand-blue/30 transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl lg:text-5xl font-bold mb-6">
-            Trusted by
+        <div class="text-center mb-20">
+          <h2 class="text-4xl lg:text-5xl font-extrabold font-display mb-6 dark:text-white">
+            Trusted by the
             <span
-              class="bg-gradient-to-r from-brand-gold to-brand-blue bg-clip-text text-transparent"
-              >Healthcare Professionals</span
+              class="bg-gradient-to-r from-brand-gold to-brand-blue-accent bg-clip-text text-transparent"
+              >Medical Community</span
             >
           </h2>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
           <div
-            class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+            class="bg-white dark:bg-white/5 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all border border-slate-100 dark:border-white/10"
           >
             <div class="flex items-center mb-6">
-              <div class="w-12 h-12 rounded-full mr-4 bg-gradient-to-br from-brand-gold to-brand-blue flex items-center justify-center text-white font-bold">SC</div>
+              <div class="w-12 h-12 rounded-2xl mr-4 bg-gradient-to-br from-brand-gold to-brand-blue-accent flex items-center justify-center text-white font-extrabold font-display">SC</div>
               <div>
-                <h4 class="font-semibold text-gray-900 dark:text-white">
+                <h4 class="font-bold font-display text-slate-900 dark:text-white">
                   Dr. Sarah Chen
                 </h4>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">
                   Chief Medical Officer
                 </p>
               </div>
             </div>
-            <p class="text-gray-700 dark:text-gray-300 italic leading-relaxed">
+            <p class="text-slate-600 dark:text-slate-300 italic leading-relaxed">
               "The DoctorG mobile app has revolutionized our patient triage
               process. Having AI diagnostic accuracy in my pocket is incredible
               - it's become an invaluable tool for our medical team."
@@ -834,20 +986,20 @@
           </div>
 
           <div
-            class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+            class="bg-white dark:bg-white/5 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all border border-slate-100 dark:border-white/10"
           >
             <div class="flex items-center mb-6">
-              <div class="w-12 h-12 rounded-full mr-4 bg-gradient-to-br from-brand-blue to-brand-red flex items-center justify-center text-white font-bold">MR</div>
+              <div class="w-12 h-12 rounded-2xl mr-4 bg-gradient-to-br from-brand-blue-accent to-brand-red flex items-center justify-center text-white font-extrabold font-display">MR</div>
               <div>
-                <h4 class="font-semibold text-gray-900 dark:text-white">
+                <h4 class="font-bold font-display text-slate-900 dark:text-white">
                   Dr. Michael Rodriguez
                 </h4>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">
                   Emergency Medicine
                 </p>
               </div>
             </div>
-            <p class="text-gray-700 dark:text-gray-300 italic leading-relaxed">
+            <p class="text-slate-600 dark:text-slate-300 italic leading-relaxed">
               "Having DoctorG on my phone means I can access medical expertise
               anywhere, anytime. The mobile app has significantly improved
               patient satisfaction and my confidence in emergency situations."
@@ -855,20 +1007,20 @@
           </div>
 
           <div
-            class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
+            class="bg-white dark:bg-white/5 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all border border-slate-100 dark:border-white/10"
           >
             <div class="flex items-center mb-6">
-              <div class="w-12 h-12 rounded-full mr-4 bg-gradient-to-br from-brand-red to-brand-gold flex items-center justify-center text-white font-bold">LT</div>
+              <div class="w-12 h-12 rounded-2xl mr-4 bg-gradient-to-br from-brand-red to-brand-gold flex items-center justify-center text-white font-extrabold font-display">LT</div>
               <div>
-                <h4 class="font-semibold text-gray-900 dark:text-white">
+                <h4 class="font-bold font-display text-slate-900 dark:text-white">
                   Lisa Thompson
                 </h4>
-                <p class="text-gray-600 dark:text-gray-400 text-sm">
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">
                   Healthcare Administrator
                 </p>
               </div>
             </div>
-            <p class="text-gray-700 dark:text-gray-300 italic leading-relaxed">
+            <p class="text-slate-600 dark:text-slate-300 italic leading-relaxed">
               "The DoctorG mobile app has helped us reduce operational costs
               while maintaining excellent patient care standards. It's a
               game-changer for healthcare efficiency and accessibility."
@@ -879,29 +1031,29 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-20 gradient-bg">
-      <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">
-          Ready to Download DoctorG?
+    <section class="py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-brand-blue"></div>
+      <div class="absolute inset-0 gradient-bg opacity-30"></div>
+      <div class="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl lg:text-5xl font-extrabold font-display text-white mb-6">
+          Ready to Experience DoctorG?
         </h2>
-        <p class="text-xl text-white/90 mb-8">
-          Join thousands of healthcare professionals who rely on DoctorG mobile
-          app for intelligent clinical decision support and enhanced patient
-          care.
+        <p class="text-xl text-white/80 mb-10 leading-relaxed font-medium">
+          Join the medical revolution. Download the AI-powered clinical assistant that's transforming patient care, one smartphone at a time.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <!-- App Store Buttons -->
           <a
             href="https://apps.apple.com/ua/app/dr-g/id6756027530"
-            class="transition-transform hover:scale-105"
+            class="transition-all hover:scale-110 active:scale-95 hover:brightness-110"
           >
-            <img src="assets/apple_store.svg" alt="Download on the App Store" class="h-14">
+            <img src="assets/apple_store.svg" alt="Download on the App Store" class="h-16">
           </a>
           <a
             href="https://play.google.com/store/apps/details?id=com.onecellai.drg"
-            class="transition-transform hover:scale-105"
+            class="transition-all hover:scale-110 active:scale-95 hover:brightness-110"
           >
-            <img src="assets/android_store.svg" alt="Get it on Google Play" class="h-14">
+            <img src="assets/android_store.svg" alt="Get it on Google Play" class="h-16">
           </a>
         </div>
       </div>
@@ -910,24 +1062,24 @@
     <!-- Footer -->
     <footer
       id="contact"
-      class="bg-gray-900 dark:bg-black text-white py-16 transition-colors duration-300"
+      class="bg-brand-blue text-white py-20 border-t border-white/5 transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-4 gap-8">
+        <div class="grid md:grid-cols-4 gap-12">
           <div class="col-span-2">
-            <div class="flex items-center space-x-2 mb-6">
-              <img src="assets/logo.webp" alt="DoctorG Logo" class="w-10 h-10 rounded-lg object-cover">
-              <span class="text-2xl font-bold">DoctorG</span>
+            <div class="flex items-center space-x-3 mb-8">
+              <div class="w-11 h-11 bg-white/10 rounded-xl flex items-center justify-center overflow-hidden border border-white/20">
+                <img src="assets/logo.webp" alt="DoctorG Logo" class="w-full h-full object-cover">
+              </div>
+              <span class="text-2xl font-extrabold font-display tracking-tight text-white">DoctorG</span>
             </div>
-            <p class="text-gray-400 mb-6 max-w-md">
-              Revolutionizing healthcare with AI-powered virtual doctor mobile
-              app. Providing intelligent, accessible, and personalized medical
-              guidance for everyone, available on iOS and Android.
+            <p class="text-slate-400 mb-8 max-w-md leading-relaxed font-medium">
+              Empowering healthcare with state-of-the-art AI. The world's most intelligent virtual doctor mobile assistant, designed for clinical precision and patient excellence.
             </p>
-            <div class="flex space-x-4">
+            <div class="flex space-x-5">
               <a
                 href="#"
-                class="w-10 h-10 bg-gray-800 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-brand-gold transition-colors"
+                class="w-11 h-11 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -937,7 +1089,7 @@
               </a>
               <a
                 href="#"
-                class="w-10 h-10 bg-gray-800 dark:bg-gray-700 rounded-full flex items-center justify-center hover:bg-brand-gold transition-colors"
+                class="w-11 h-11 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-blue transition-all"
               >
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path
@@ -949,55 +1101,50 @@
           </div>
 
           <div>
-            <h3 class="text-lg font-semibold mb-4">Mobile App</h3>
-            <ul class="space-y-2 text-gray-400">
+            <h3 class="text-lg font-bold font-display uppercase tracking-wider text-brand-gold mb-6">Mobile App</h3>
+            <ul class="space-y-4 text-slate-400">
               <li>
                 <a
                   href="https://apps.apple.com/ua/app/dr-g/id6756027530"
-                  class="hover:text-white transition-colors"
-                  >iOS App</a
+                  class="hover:text-white transition-colors font-medium border-b border-transparent hover:border-brand-gold"
+                  >iOS Application</a
                 >
               </li>
               <li>
                 <a
                   href="https://play.google.com/store/apps/details?id=com.onecellai.drg"
-                  class="hover:text-white transition-colors"
-                  >Android App</a
+                  class="hover:text-white transition-colors font-medium border-b border-transparent hover:border-brand-gold"
+                  >Android Application</a
                 >
               </li>
               <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Features</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >System Requirements</a
+                <a href="#features" class="hover:text-white transition-colors font-medium border-b border-transparent hover:border-brand-gold"
+                  >Core Features</a
                 >
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 class="text-lg font-semibold mb-4">Support</h3>
-            <ul class="space-y-2 text-gray-400">
+            <h3 class="text-lg font-bold font-display uppercase tracking-wider text-brand-gold mb-6">Support</h3>
+            <ul class="space-y-4 text-slate-400">
               <li>
-                <a href="#" class="hover:text-white transition-colors"
+                <a href="#" class="hover:text-white transition-colors font-medium border-b border-transparent hover:border-brand-gold"
                   >Help Center</a
                 >
               </li>
               <li>
-                <a href="#" class="hover:text-white transition-colors"
+                <a href="#" class="hover:text-white transition-colors font-medium border-b border-transparent hover:border-brand-gold"
                   >Contact Us</a
                 >
               </li>
               <li>
-                <a href="#" class="hover:text-white transition-colors"
+                <a href="#" class="hover:text-white transition-colors font-medium border-b border-transparent hover:border-brand-gold"
                   >Privacy Policy</a
                 >
               </li>
               <li>
-                <a href="#" class="hover:text-white transition-colors"
+                <a href="#" class="hover:text-white transition-colors font-medium border-b border-transparent hover:border-brand-gold"
                   >Terms of Service</a
                 >
               </li>
@@ -1006,7 +1153,7 @@
         </div>
 
         <div
-          class="border-t border-gray-800 dark:border-gray-700 mt-12 pt-8 text-center text-gray-400"
+          class="border-t border-slate-200 dark:border-white/10 mt-12 pt-8 text-center text-slate-500"
         >
           <p>
             &copy; 2024 DoctorG. All rights reserved. Available on iOS and
@@ -1069,10 +1216,10 @@
       let isScrolled = false;
       window.addEventListener("scroll", function () {
         if (!isScrolled && window.scrollY > 100) {
-          document.querySelector("nav").classList.add("backdrop-blur-md", "bg-white/80", "dark:bg-gray-900/80");
+          document.querySelector("nav").classList.add("backdrop-blur-md", "bg-white/80", "dark:bg-brand-blue/80");
           isScrolled = true;
         } else if (isScrolled && window.scrollY <= 100) {
-          document.querySelector("nav").classList.remove("backdrop-blur-md", "bg-white/80", "dark:bg-gray-900/80");
+          document.querySelector("nav").classList.remove("backdrop-blur-md", "bg-white/80", "dark:bg-brand-blue/80");
           isScrolled = false;
         }
       }, { passive: true });

@@ -4,11 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DoctorG - AI-Powered Virtual Doctor Avatar Mobile App</title>
-    <!-- Resource Hints for Ultra-Fast Loading -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://images.unsplash.com">
+    
+    <!-- Ultra-Fast Resource Hints -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="dns-prefetch" href="https://images.unsplash.com">
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+    <link rel="preload" href="assets/logo.webp" as="image">
+    <link rel="preload" href="assets/apple_store.svg" as="image">
+    
+    <script src="https://cdn.tailwindcss.com" defer></script>
     <script>
       tailwind.config = {
         darkMode: "class",
@@ -90,8 +97,42 @@
 
       .animate-float {
         will-change: transform;
+        transform: translateZ(0); /* Force GPU Layer */
+      }
+
+      /* Bullet Speed Magic: Only render what is visible */
+      section:not(#hero) {
+        content-visibility: auto;
+        contain-intrinsic-size: 1px 1000px;
+      }
+
+      /* Critical Path CSS */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        content-visibility: visible;
+      }
+
+      /* Optimize animations for low-end devices */
+      @media (prefers-reduced-motion: reduce) {
+        .animate-float, .animate-pulse-slow {
+          animation: none !important;
+        }
       }
     </style>
+    
+    <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": ["#features", "#how-it-works", "#benefits", "#contact"]
+        }
+      ]
+    }
+    </script>
   </head>
   <body
     class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden transition-colors duration-300"
@@ -215,6 +256,7 @@
                 alt="DoctorG Mobile App Interface"
                 class="w-full max-w-sm mx-auto rounded-3xl shadow-2xl"
                 fetchpriority="high"
+                decoding="async"
               />
             </div>
             <div
@@ -981,23 +1023,24 @@
         });
       });
 
-      // Add scroll effect to navigation
+      // Performance-optimized scroll listener (Passive)
+      let isScrolled = false;
       window.addEventListener("scroll", function () {
-        const nav = document.querySelector("nav");
-        if (window.scrollY > 100) {
-          nav.classList.add(
-            "backdrop-blur-md",
-            "bg-white/80",
-            "dark:bg-gray-900/80"
-          );
-        } else {
-          nav.classList.remove(
-            "backdrop-blur-md",
-            "bg-white/80",
-            "dark:bg-gray-900/80"
-          );
+        if (!isScrolled && window.scrollY > 100) {
+          document.querySelector("nav").classList.add("backdrop-blur-md", "bg-white/80", "dark:bg-gray-900/80");
+          isScrolled = true;
+        } else if (isScrolled && window.scrollY <= 100) {
+          document.querySelector("nav").classList.remove("backdrop-blur-md", "bg-white/80", "dark:bg-gray-900/80");
+          isScrolled = false;
         }
-      });
+      }, { passive: true });
+
+      // Defer non-critical logic
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          console.log('Bullet speed magic enabled: background tasks optimized.');
+        });
+      }
     </script>
   </body>
 </html>

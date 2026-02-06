@@ -71,12 +71,25 @@
       .neural-pattern {
         background-image: radial-gradient(
             circle at 25% 25%,
-            rgba(218, 165, 32, 0.1) 0%,
+            rgba(218, 165, 32, 0.15) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 75% 75%,
-            rgba(92, 122, 198, 0.1) 0%,
+            rgba(92, 122, 198, 0.15) 0%,
+            transparent 50%
+          );
+      }
+
+      .dark .neural-pattern {
+        background-image: radial-gradient(
+            circle at 25% 25%,
+            rgba(218, 165, 32, 0.25) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            rgba(92, 122, 198, 0.25) 0%,
             transparent 50%
           );
       }
@@ -98,6 +111,40 @@
       .animate-float {
         will-change: transform;
         transform: translateZ(0); /* Force GPU Layer */
+      }
+
+      /* Premium App Screenshot Stack */
+      .app-screen-stack {
+        perspective: 2000px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 500px;
+      }
+
+      .app-screen-main {
+        transform: rotateY(-15deg) rotateX(10deg);
+        z-index: 20;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: -20px 20px 50px rgba(0,0,0,0.3);
+      }
+
+      .app-screen-secondary {
+        transform: rotateY(-15deg) rotateX(10deg) translateZ(-100px) translateX(80px);
+        opacity: 0.7;
+        z-index: 10;
+        transition: all 0.6s ease;
+      }
+
+      .app-screen-stack:hover .app-screen-main {
+        transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+        z-index: 30;
+      }
+
+      .app-screen-stack:hover .app-screen-secondary {
+        transform: rotateY(-5deg) rotateX(5deg) translateZ(-50px) translateX(120px);
+        opacity: 0.3;
       }
 
       /* Bullet Speed Magic: Only render what is visible */
@@ -141,8 +188,10 @@
     <nav class="fixed top-0 w-full z-50 glass-effect">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-4">
-          <div class="flex items-center space-x-2">
-            <img src="assets/logo.webp" alt="DoctorG Logo" class="w-10 h-10 rounded-lg object-cover">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 bg-gradient-to-r from-brand-gold to-brand-blue rounded-lg flex items-center justify-center overflow-hidden shadow-lg border-2 border-white/20">
+              <img src="assets/logo.webp" alt="DoctorG" class="w-full h-full object-cover">
+            </div>
             <span
               class="text-2xl font-bold bg-gradient-to-r from-brand-gold to-brand-blue bg-clip-text text-transparent"
               >DoctorG</span
@@ -249,21 +298,29 @@
               Available for iOS 14.0+ and Android 8.0+
             </p>
           </div>
-          <div class="relative">
-            <div class="animate-float">
+          <div class="relative app-screen-stack">
+            <div class="animate-float relative">
+              <!-- Main App Screen (IMG_9520 as primary per user request) -->
               <img
-                src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/84/b0/00/84b0004c-e61d-a3af-08c4-ae0bf9487223/101.jpg/600x1300bb.webp"
-                alt="DoctorG App Official Screenshot"
-                class="w-full max-w-sm mx-auto rounded-[3rem] shadow-2xl border-8 border-gray-900 dark:border-gray-800"
+                src="assets/IMG_9520.PNG"
+                alt="DoctorG Primary Interface"
+                class="app-screen-main w-full max-w-sm mx-auto rounded-[3rem] shadow-2xl border-8 border-gray-900 dark:border-white/10"
                 fetchpriority="high"
                 decoding="async"
               />
+              <!-- Secondary App Screen (IMG_9516 as secondary) -->
+              <img
+                src="assets/IMG_9516.PNG"
+                alt="DoctorG Secondary Interface"
+                class="app-screen-secondary absolute top-0 left-0 w-full max-w-sm mx-auto rounded-[3rem] shadow-xl border-4 border-gray-800 dark:border-white/5 hidden lg:block"
+                loading="lazy"
+              />
             </div>
             <div
-              class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-brand-yellow to-brand-blue rounded-full animate-pulse-slow opacity-20"
+              class="absolute -top-10 -right-10 w-48 h-48 bg-brand-gold rounded-full opacity-20 blur-3xl animate-pulse-slow"
             ></div>
             <div
-              class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-brand-red to-brand-gold rounded-full animate-pulse-slow opacity-20"
+              class="absolute -bottom-10 -left-10 w-64 h-64 bg-brand-blue rounded-full opacity-10 blur-3xl animate-pulse-slow"
             ></div>
           </div>
         </div>
@@ -524,9 +581,9 @@
               clinical questions through the intuitive mobile interface.
             </p>
             <img
-              src="https://images.unsplash.com/photo-1551033413-5ead18cb33bb?w=300&h=200&fit=crop&q=60"
-              alt="Digital Application Logic"
-              class="w-full max-w-sm mx-auto rounded-xl shadow-lg"
+              src="assets/IMG_9517.PNG"
+              alt="Download DoctorG App"
+              class="w-full max-w-[200px] mx-auto rounded-3xl shadow-lg border-4 border-gray-100 dark:border-gray-800"
               loading="lazy"
             />
           </div>
@@ -549,9 +606,9 @@
               directly on your smartphone.
             </p>
             <img
-              src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=300&h=200&fit=crop&q=60"
-              alt="Neural Network Visualization"
-              class="w-full max-w-sm mx-auto rounded-xl shadow-lg"
+              src="assets/IMG_9519.PNG"
+              alt="DoctorG AI Analysis"
+              class="w-full max-w-[200px] mx-auto rounded-3xl shadow-lg border-4 border-gray-100 dark:border-gray-800"
               loading="lazy"
             />
           </div>
@@ -576,9 +633,9 @@
               to support your decision-making.
             </p>
             <img
-              src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=300&h=200&fit=crop&q=60"
-              alt="Digital Pulse Communication"
-              class="w-full max-w-sm mx-auto rounded-xl shadow-lg"
+              src="assets/IMG_9516.PNG"
+              alt="DoctorG Medical Guidance"
+              class="w-full max-w-[200px] mx-auto rounded-3xl shadow-lg border-4 border-gray-100 dark:border-gray-700"
               loading="lazy"
             />
           </div>
